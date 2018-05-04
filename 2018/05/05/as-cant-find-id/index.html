@@ -7,26 +7,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Android视频实现CenterCrop | Zeyio</title>
+  <title>“Android Studio 找不到符号 类id”问题解决 | Zeyio</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="android," />
+    <meta name="keywords" content="Android," />
   
 
-  <meta name="description" content="CenterCrop的核心是使用TextureView的setTransform)方法来实现对视频区域的变换。   思路来自于：github  因为产品需求的原因，在展示视频的时候需要使用类似ImageView的CenterCrop属性。对指定区域进行填充，对视频等比放大。  重写了TextureView，在其中使用M">
-<meta name="keywords" content="android">
+  <meta name="description" content="移动文件之后，发现代码编译错误，报错信息如下：  错误: 找不到符号 符号:  变量 back_btn 位置: 类 id  但是，在Android Studio里面点击id的使用，仍然可以跳转到xml里面。 原因是：代码是从一个module移动到另一个module，对R的引用还是引用的之前的module的，导致无法找到">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android视频实现CenterCrop">
-<meta property="og:url" content="http://zeyio.com/2017/11/22/video-center-crop/index.html">
+<meta property="og:title" content="“Android Studio 找不到符号 类id”问题解决">
+<meta property="og:url" content="http://zeyio.com/2018/05/05/as-cant-find-id/index.html">
 <meta property="og:site_name" content="Zeyio">
-<meta property="og:description" content="CenterCrop的核心是使用TextureView的setTransform)方法来实现对视频区域的变换。   思路来自于：github  因为产品需求的原因，在展示视频的时候需要使用类似ImageView的CenterCrop属性。对指定区域进行填充，对视频等比放大。  重写了TextureView，在其中使用MediaPlayer来播放视频。（上面库的ScalableVideoView 类">
+<meta property="og:description" content="移动文件之后，发现代码编译错误，报错信息如下：  错误: 找不到符号 符号:  变量 back_btn 位置: 类 id  但是，在Android Studio里面点击id的使用，仍然可以跳转到xml里面。 原因是：代码是从一个module移动到另一个module，对R的引用还是引用的之前的module的，导致无法找到。 解决方法是：把import里面对R的引用删除掉，让AS自动再次引入就可以了。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-22T17:25:58.160Z">
+<meta property="og:image" content="http://zeyio.com/images/sad.png">
+<meta property="og:updated_time" content="2018-05-04T16:17:10.696Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android视频实现CenterCrop">
-<meta name="twitter:description" content="CenterCrop的核心是使用TextureView的setTransform)方法来实现对视频区域的变换。   思路来自于：github  因为产品需求的原因，在展示视频的时候需要使用类似ImageView的CenterCrop属性。对指定区域进行填充，对视频等比放大。  重写了TextureView，在其中使用MediaPlayer来播放视频。（上面库的ScalableVideoView 类">
+<meta name="twitter:title" content="“Android Studio 找不到符号 类id”问题解决">
+<meta name="twitter:description" content="移动文件之后，发现代码编译错误，报错信息如下：  错误: 找不到符号 符号:  变量 back_btn 位置: 类 id  但是，在Android Studio里面点击id的使用，仍然可以跳转到xml里面。 原因是：代码是从一个module移动到另一个module，对R的引用还是引用的之前的module的，导致无法找到。 解决方法是：把import里面对R的引用删除掉，让AS自动再次引入就可以了。">
+<meta name="twitter:image" content="http://zeyio.com/images/sad.png">
 
   
 
@@ -106,14 +108,14 @@
 
 
 <div class="content content-post CENTER">
-   <article id="post-video-center-crop" class="article article-type-post" itemprop="blogPost">
+   <article id="post-as-cant-find-id" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">Android视频实现CenterCrop</h1>
+    <h1 class="post-title">“Android Studio 找不到符号 类id”问题解决</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2017.11.22</span>
+        <span>2018.05.05</span>
       </span>
 
       
@@ -141,14 +143,19 @@
 
   <div class="article-content">
     
-      <p><strong>CenterCrop的核心是使用TextureView的<a href="https://developer.android.com/reference/android/view/TextureView.html#setTransform(android.graphics.Matrix" target="_blank" rel="noopener">setTransform</a>)方法来实现对视频区域的变换。</strong></p>
+      <p>移动文件之后，发现代码编译错误，报错信息如下：</p>
 <blockquote>
-<p> 思路来自于：<a href="https://github.com/yqritc/Android-ScalableVideoView" target="_blank" rel="noopener">github</a></p>
-<p> 因为产品需求的原因，在展示视频的时候需要使用类似ImageView的CenterCrop属性。对指定区域进行填充，对视频等比放大。</p>
+<p>错误: 找不到符号</p>
+<p>符号:  变量 back_btn</p>
+<p>位置: 类 id</p>
 </blockquote>
-<p>重写了TextureView，在其中使用MediaPlayer来播放视频。（上面库的ScalableVideoView 类里面）</p>
-<p>我的实现是在重写TextureView的View的onMeasure方法里面进行如下计算，来实现centerCrop:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> viewWidth = getDefaultSize(mVideoWidth, widthMeasureSpec);</span><br><span class="line"><span class="keyword">int</span> viewHeight = getDefaultSize(mVideoHeight, heightMeasureSpec);</span><br><span class="line">setMeasuredDimension(viewWidth, viewHeight);</span><br><span class="line"><span class="keyword">float</span> scaleX = viewWidth * <span class="number">1.0f</span> / mVideoWidth;</span><br><span class="line"><span class="keyword">float</span> scaleY = viewHeight * <span class="number">1.0f</span> / mVideoHeight;</span><br><span class="line"><span class="keyword">float</span> maxScale = Math.max(scaleX, scaleY);</span><br><span class="line"><span class="comment">//中心位置</span></span><br><span class="line"><span class="keyword">int</span> pivotPointX = viewWidth / <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> pivotPointY = viewHeight / <span class="number">2</span>;</span><br><span class="line"><span class="comment">//初始效果是填满View，相当于fitXY. 这里从fitXY变成centerCrop..</span></span><br><span class="line">mMatrix.setScale(maxScale / scaleX , maxScale / scaleY, pivotPointX, pivotPointY);</span><br><span class="line">setTransform(mMatrix);</span><br></pre></td></tr></table></figure>
+<p>但是，在Android Studio里面点击id的使用，仍然可以跳转到xml里面。</p>
+<p>原因是：代码是从一个module移动到另一个module，对R的引用还是引用的之前的module的，导致无法找到。</p>
+<p>解决方法是：把import里面对R的引用删除掉，让AS自动再次引入就可以了。</p>
+<p>**</p>
+<hr>
+<p><em>解决时多次重启as，rebuild项目，说多了都是泪</em></p>
+<p><img src="/images/sad.png" alt="sad"></p>
 
     
   </div>
@@ -186,10 +193,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2017/11/21/hello-world/">
+    <a class="show pull-left" href="/2017/11/22/video-center-crop/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2018/05/05/as-cant-find-id/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
