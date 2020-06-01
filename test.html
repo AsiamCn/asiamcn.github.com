@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ios Test</title>
+    <style type="text/css">
+        body {
+            background-color: yellow
+        }
+
+        div {
+            font-family: DIN;
+        }
+
+        @font-face {
+            font-family: 'DIN';
+            src: url('https://pub.idqqimg.com/pc/misc/files/20180504/f100de9e89f34a01a6c4a0dd2bad8163.ttf') format('truetype'),
+                url('https://pub.idqqimg.com/pc/misc/files/20180504/849384770a7b48b482bba2c671506c59.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Html test</div>
+    <div id="container">
+    </div>
+    <script>
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                //append lines.
+                let newDiv = document.createElement("div");
+                let newContent = document.createTextNode("Hi there and greetings!" + i);
+                newDiv.appendChild(newContent);
+                let currentDiv = document.getElementById("container");
+                document.body.insertBefore(newDiv, currentDiv);
+            }, i * 200)
+        }
+
+        //图片请求延迟10s返回
+        new Image().src = 'https://www.mocky.io/v2/5185415ba171ea3a00704eed?mocky-delay=10000ms';
+    </script>
+
+</body>
+
+</html>
